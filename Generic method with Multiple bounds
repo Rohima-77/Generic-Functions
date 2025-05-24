@@ -1,0 +1,28 @@
+public class SortAndShowDemo {
+
+    // 🔸 Generic method with multiple bounds:
+    // T must be a subclass of Number AND must implement Comparable<T>
+    public <T extends Number & Comparable<T>> void sortAndShow(T a, T b) {
+        if (a.compareTo(b) > 0) {
+            System.out.println(a + " is greater");
+        } else {
+            System.out.println(b + " is greater");
+        }
+    }
+
+    public static void main(String[] args) {
+        SortAndShowDemo demo = new SortAndShowDemo();
+
+        // Integer implements Number and Comparable<Integer>
+        demo.sortAndShow(10, 20);  // Output: 20 is greater
+
+        // Double implements Number and Comparable<Double>
+        demo.sortAndShow(15.5, 9.8);  // Output: 15.5 is greater
+
+        // Float also works
+        demo.sortAndShow(7.2f, 7.2f);  // Output: 7.2 is greater (equal, but else block runs)
+
+        // ❌ Compilation error if types don't match the bounds:
+        // demo.sortAndShow("Hello", "World"); // Not allowed: String isn't a subclass of Number
+    }
+}
