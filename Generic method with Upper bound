@@ -1,0 +1,18 @@
+public class GenericDemo {
+
+    // Generic Method: T must extend Number (i.e., Integer, Double, Float, etc.)
+    public <T extends Number> void showDoubleValue(T num) {
+        // Number class-এর doubleValue() method call করা হচ্ছে
+        System.out.println("Double value: " + num.doubleValue());
+    }
+
+    public static void main(String[] args) {
+        GenericDemo demo = new GenericDemo();
+
+        demo.showDoubleValue(10);       // Integer -> prints: 10.0
+        demo.showDoubleValue(12.34);    // Double  -> prints: 12.34
+        demo.showDoubleValue(7.5f);     // Float   -> prints: 7.5
+
+        // demo.showDoubleValue("Hello"); ❌ Compilation error: String doesn't extend Number
+    }
+}
