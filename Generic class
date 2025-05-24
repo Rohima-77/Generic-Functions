@@ -1,0 +1,29 @@
+// একটি Generic Class তৈরি করা হচ্ছে
+public class Box<T> {
+    private T value;
+
+    // সেট করার জন্য মেথড
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    // পাওয়ার জন্য মেথড
+    public T getValue() {
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Integer টাইপের Box
+        Box<Integer> intBox = new Box<>();
+        intBox.setValue(123);
+        System.out.println("Integer value: " + intBox.getValue());
+
+        // String টাইপের Box
+        Box<String> strBox = new Box<>();
+        strBox.setValue("Hello, Generics!");
+        System.out.println("String value: " + strBox.getValue());
+    }
+}
+
