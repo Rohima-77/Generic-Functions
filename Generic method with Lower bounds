@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class LowerBoundDemo {
+
+    // Method accepts a list of Integer or any of its supertypes (like Number, Object)
+    public void addNumbers(List<? super Integer> list) {
+        list.add(10);   // ✅ Allowed: You can add Integer values
+        list.add(20);   // ✅ Allowed: Integer is valid
+        // list.add(3.14); // ❌ Not allowed: 3.14 is a Double, not an Integer
+        System.out.println("List after adding: " + list);
+    }
+
+    public static void main(String[] args) {
+        LowerBoundDemo demo = new LowerBoundDemo();
+
+        List<Integer> intList = new ArrayList<>();
+        demo.addNumbers(intList); // Valid
+
+        List<Number> numList = new ArrayList<>();
+        demo.addNumbers(numList); // Valid: Number is a supertype of Integer
+
+        List<Object> objList = new ArrayList<>();
+        demo.addNumbers(objList); // Valid: Object is also a supertype
+
+        // List<Double> dblList = new ArrayList<>();
+        // demo.addNumbers(dblList); // ❌ Invalid: Double is NOT a supertype of Integer
+    }
+}
