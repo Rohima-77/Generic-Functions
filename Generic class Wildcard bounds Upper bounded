@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class UpperBoundExample {
+
+    // এখানে আমরা লিস্ট থেকে Number বা Number এর subclass এর উপাদান পড়ব
+    public static void printNumbers(List<? extends Number> list) {
+        for (Number num : list) {
+            System.out.println(num);
+        }
+
+        // list.add(10); // ❌ Error: add করার চেষ্টা করলে কম্পাইল টাইম এরর হবে
+        list.add(null);   // ✅ null add করা যায়, কারণ সব টাইপেই null যেতে পারে
+    }
+
+    public static void main(String[] args) {
+        List<Integer> intList = Arrays.asList(1, 2, 3, 4);
+        List<Double> doubleList = Arrays.asList(2.5, 3.7, 4.1);
+
+        printNumbers(intList);    // কাজ করবে কারণ Integer extends Number
+        printNumbers(doubleList); // কাজ করবে কারণ Double extends Number
+
+        // List<String> strList = Arrays.asList("a", "b");
+        // printNumbers(strList); // ❌ Error: String Number এর subclass নয়
+    }
+}
