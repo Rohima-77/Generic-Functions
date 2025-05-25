@@ -1,0 +1,51 @@
+import java.util.*;
+
+//  Generic Pair class যেটি Comparable interface implement করে
+class Pair<T extends Comparable<T>> implements Comparable<Pair<T>> {
+
+    private T first;
+    private T second;
+
+    //  Constructor: দুইটি মান সেট করার জন্য
+    public Pair(T first, T second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    //  compareTo method: প্রথমে first compare করে, সমান হলে second compare করে
+    @Override
+    public int compareTo(Pair<T> other) {
+        int result = this.first.compareTo(other.first);
+        if (result == 0) {
+            return this.second.compareTo(other.second);
+        }
+        return result;
+    }
+
+    //  toString method: pair কে string আকারে দেখানোর জন্য
+    @Override
+    public String toString() {
+        return "(" + first + ", " + second + ")";
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Pair<Integer> p1 = new Pair<>(10, 20);
+        Pair<Integer> p2 = new Pair<>(10, 30);
+        Pair<Integer> p3 = new Pair<>(5, 50);
+
+        System.out.println(p1.compareTo(p2)); // < 0 because 20 < 30
+        System.out.println(p1.compareTo(p3)); // > 0 because 10 > 5
+
+        List<Pair<Integer>> list = new ArrayList<>();
+        list.add(p1);
+        list.add(p2);
+        list.add(p3);
+
+        Collections.sort(list);
+
+        for (Pair<Integer> p : list) {
+            System.out.println(p);
+        }
+    }
+}
