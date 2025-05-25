@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class LowerBoundedBox<T> {
+
+    // Method that accepts a list that can hold T or any of its superclasses
+    public void addToList(List<? super T> list, T item) {
+        list.add(item);  // ✅ Valid
+        System.out.println("After adding: " + list);
+    }
+
+    public static void main(String[] args) {
+
+        LowerBoundedBox<Integer> box = new LowerBoundedBox<>();
+
+        List<Integer> intList = new ArrayList<>();
+        List<Number> numList = new ArrayList<>();
+        List<Object> objList = new ArrayList<>();
+
+        box.addToList(intList, 10);   // ✅ Integer is Integer
+        box.addToList(numList, 20);   // ✅ Integer is subtype of Number
+        box.addToList(objList, 30);   // ✅ Integer is subtype of Object
+
+        // List<Double> doubleList = new ArrayList<>();
+        // box.addToList(doubleList, 40); // ❌ Compilation error: Double is not a supertype of Integer
+    }
+}
