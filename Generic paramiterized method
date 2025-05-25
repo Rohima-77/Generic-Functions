@@ -1,0 +1,30 @@
+public class GenericMethodExample {
+
+    // Generic parameterized method
+    public <T> void printArrayElement(T element) {
+        System.out.println("Element is: " + element);
+    }
+
+    // Another generic method with two parameters of different types
+    public <T, U> void printTwoElements(T first, U second) {
+        System.out.println("First element: " + first);
+        System.out.println("Second element: " + second);
+    }
+
+    public static void main(String[] args) {
+        GenericMethodExample obj = new GenericMethodExample();
+
+        // Call generic method with String
+        obj.<String>printArrayElement("Hello");
+
+        // Call generic method with Integer
+        obj.<Integer>printArrayElement(123);
+
+        // Compiler usually infers type, so can call like this too:
+        obj.printArrayElement(45.67); // Double
+
+        // Call generic method with two different types
+        obj.printTwoElements("Age", 25);
+        obj.printTwoElements(100, 200.5);
+    }
+}
