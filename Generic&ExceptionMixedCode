@@ -1,0 +1,58 @@
+Public class GenericData<T>
+{
+      private T data;
+      public GenericData(T data)
+      {
+          this.data = data;
+      }
+      public T getData(){
+        return data;
+      }
+      public void setData(T data)
+      {
+          this.data = data;
+      }
+      public void argswap(GenericData<T> other)
+      {
+          try{
+                if(other == null){
+                    throw new NullpointerException("passed object is null")
+                }
+      T temp = this.data;
+      this.data = other.getData();
+      Other.setData(temp);
+      System.out.println("Swap Successful");
+      }
+      Catch(NullpointerException e){
+        System.out.println("Exception Caught: " +e.getMessage);
+      }
+      }
+      public void display()
+      {
+          System.out.println("Data: "+data);
+      }
+      public static void main(String[] args)
+      {
+          GenericData<string> obj1 = new GenericData<>("Java");
+          GenericData<string> obj2 = new GenericData<>("Python");
+          GenericData<string> objNull = null;
+          Sytem.out.println("Bafore Swap: ");
+          obj1.display();
+          obj2.display();
+          obj1.argswap(obj2);
+          Sytem.out.println("After Swap: ");
+          obj1.display();
+          obj2.display();
+          System.out.println("\n Arrempting to swap with null: ");
+          obj1.argswap(objNull);
+      }
+}
+          
+
+
+
+
+
+
+
+
